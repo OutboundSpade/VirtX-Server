@@ -1,0 +1,80 @@
+/*
+#141719
+bg-dark
+#2f353a -lighter
+#33393f -lightest
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+
+.logo-text {
+  font-family: Major Mono Display;
+  /* font-weight: 200; */
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.all-center {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.all-top-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.copyr {
+  position: absolute;
+  bottom: 2%;
+}
+.userIcon {
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.app {
+  text-align: center;
+  margin: 2%;
+  /* width: 30rem !important; */
+  height: 16rem;
+  /* max-height: 15rem !important; */
+  padding: 1.4rem;
+  border-radius: 2%;
+  display: inline-table;
+  /* border: 3px solid #141719; */
+
+  max-width: 300px !important;
+}
+.applogo {
+  max-width: 200px;
+  width: 5rem !important;
+  height: 5rem !important;
+}
+.apptitle {
+  font-size: x-large;
+  display: inline;
+}
+.appdesc {
+  display: inline-block;
+  font-size: small;
+  overflow-y: auto;
+  max-height: 4rem;
+  /* max-width: 100%; */
+  margin-top: 4%;
+  /* color: var(--bs-gray); */
+}
+.hidden {
+  display: none;
+}
+
+/* #apps {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+} */

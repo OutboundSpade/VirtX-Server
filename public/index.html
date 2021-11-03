@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script defer src="./javascript/getApps.js"></script>
+    <script defer src="./javascript/getUserInfo.js"></script>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <title>VirtX | Dashboard</title>
+  </head>
+  <body style="background-color: #33393f" class="text-white">
+    <nav class="navbar navbar-dark bg-dark container-fluid">
+      <span class="logo-text"
+        >VirtX|<span style="font-size: large"
+          ><samp>Dashboard</samp></span
+        ></span
+      >
+
+      <div class="dropdown">
+        <div
+          href="#"
+          role="button"
+          id="dropdownMenuLink"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          class="btn btn-dark mx-4"
+        >
+          <!-- <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1.5em"
+            height="1.5em"
+            fill="currentColor"
+            class="my-2 my-lg-0 bi bi-person-circle"
+            viewBox="0 0 16 16"
+          >
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path
+              fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+            />
+          </svg> -->
+          <img
+            id="userIcon"
+            width="35em"
+            height="35em"
+            fill="currentColor"
+            class="my-2 my-lg-0 bi bi-person-circle"
+            src="/assets/default_user.png"
+          />
+        </div>
+
+        <ul
+          id="userDropdown"
+          class="dropdown-menu dropdown-menu-dark dropdown-menu-end text-muted"
+          aria-labelledby="dropdownMenuLink"
+        >
+          <p class="ms-3">
+            <span
+              id="fullname"
+              class="spinner-border spinner-border-sm"
+              role="status"
+            ></span>
+          </p>
+          <li
+            onclick="reloadList()"
+            class="dropdown-item hidden"
+            id="reload"
+          ></li>
+          <li><a class="dropdown-item" href="./logout">Sign Out</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="text-center">
+      <div id="noapps" class="noapps m-5 text-secondary hidden">
+        Looks like you don't have any apps!
+      </div>
+      <div id="apps"></div>
+    </div>
+    <div id="spinner" class="text-center">
+      <div
+        style="width: 3rem; height: 3rem"
+        class="spinner-border m-5"
+        role="status"
+      >
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

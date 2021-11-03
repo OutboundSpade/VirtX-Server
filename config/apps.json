@@ -1,0 +1,58 @@
+{
+  "gedit": {
+    "name": "gedit",
+    "description": "gedit is a simple text editing tool similar to Microsoft Notepad",
+    "icon": "gedit.png",
+    "type": "container",
+    "container": "outboundspade48/docker-singleapp:gedit"
+  },
+  "gimp": {
+    "name": "GIMP",
+    "description": "GNU Image Manipulation Program is a Photo Manipulation tool similar to Adobe Photoshop",
+    "icon": "gimp.png",
+    "type": "container",
+    "container": "outboundspade48/docker-singleapp:gimp"
+  },
+  "firefox": {
+    "name": "Firefox",
+    "type": "container",
+    "icon": "firefox.png",
+    "description": "Firefox is a free and open-source web browser developed by the Mozilla Foundation",
+    "container": "outboundspade48/docker-singleapp:firefox"
+  },
+  "xterm": {
+    "name": "Xterm",
+    "type": "container",
+    "icon": "xterm.png",
+    "description": "Xterm is the standard terminal emulator for the X Window System",
+    "container": "outboundspade48/docker-singleapp:xterm"
+  },
+  "inkscape": {
+    "name": "Inkscape",
+    "type": "container",
+    "icon": "inkscape.png",
+    "description": "Inkscape is a free and open-source vector graphics editor used to create vector images.",
+    "container": "outboundspade48/docker-singleapp:inkscape"
+  },
+  "openshot": {
+    "name": "OpenShot",
+    "type": "container",
+    "icon": "openshot.png",
+    "description": "OpenShot Video Editor is a free and open-source video editor",
+    "container": "outboundspade48/docker-singleapp:openshot"
+  },
+  "blender": {
+    "name": "Blender",
+    "type": "container",
+    "icon": "blender.png",
+    "description": "Blender is a free and open-source 3D computer graphics software toolset",
+    "container": "outboundspade48/docker-singleapp:blender"
+  },
+  "xfce4": {
+    "name": "Xfce4",
+    "type": "container",
+    "icon": "xfce4.png",
+    "description": "Xfce4 is a free and open-source desktop environment for Unix-like operating systems",
+    "container": "outboundspade48/docker-desktop-opengl:latest"
+  }
+}

@@ -1,0 +1,12 @@
+.login-main {
+  background-color: #2f353a;
+  width: 100%;
+  padding: 3rem;
+  border-radius: 5%;
+}
+.login-title {
+  margin-bottom: 15vh;
+}
+.google-container {
+  margin: 5%;
+}
