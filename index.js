@@ -42,6 +42,8 @@ if (process.env.ENCRYPT == 1) {
   console.log("Using (unencrypted) http");
   server = require("http").createServer(app);
 }
+console.log(`Container memory limit: ${process.env.DOCKER_MEM_LIMIT}MB`);
+console.log(`Container cpu limit: ${process.env.DOCKER_CPU_LIMIT}`);
 const io = require("socket.io")(server);
 io.on("connection", async (socket) => {
   socket.on("docker-id", async (data) => {

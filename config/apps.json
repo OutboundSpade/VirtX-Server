@@ -54,5 +54,12 @@
     "icon": "xfce4.png",
     "description": "Xfce4 is a free and open-source desktop environment for Unix-like operating systems",
     "container": "outboundspade48/docker-desktop-opengl:latest"
+  },
+  "darktable": {
+    "name": "Darktable",
+    "type": "container",
+    "icon": "darktable.png",
+    "description": "Darktable is a free and open-source photography application software and raw developer.",
+    "container": "outboundspade48/docker-singleapp:darktable"
   }
 }

@@ -23,6 +23,8 @@ e.startApp = async (container, port, id, user) => {
       // "5901/tcp": {},
     },
     HostConfig: {
+      Memory: Number(process.env.DOCKER_MEM_LIMIT) * 1000000,
+      NanoCpus: Number(process.env.DOCKER_CPU_LIMIT) * 1000000000,
       Binds: [`${db.users[user].path}:${process.env.CONTAINER_PATH}:z`],
       // Mounts: [
       //   {

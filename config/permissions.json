@@ -1,4 +1,4 @@
 {
-  "design": ["gimp", "inkscape", "openshot", "blender"],
+  "design": ["gimp", "inkscape", "openshot", "darktable"],
   "3d": ["blender"]
 }
