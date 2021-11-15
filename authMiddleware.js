@@ -21,6 +21,7 @@ e.requireAuthRedirect = (req, res, next) => {
 e.requireAdmin = (req, res, next) => {
   // console.log(global.db.users);
   if (
+    req.user &&
     req.user.emails[0].verified &&
     global.db.users[req.user.emails[0].value].permissions.includes("admin")
   ) {

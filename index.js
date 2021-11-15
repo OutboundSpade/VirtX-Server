@@ -47,6 +47,10 @@ console.log(`Container cpu limit: ${process.env.DOCKER_CPU_LIMIT}`);
 const io = require("socket.io")(server);
 io.on("connection", async (socket) => {
   socket.on("docker-id", async (data) => {
+    if (data == null || data == undefined || Object.keys(data).length == 0) {
+      console.log(`No docker-id sent from ${socket.id}`);
+      return;
+    }
     console.log(`recieved docker id ${data} from ${socket.id}`);
     await redisdb.set(`socketid_${socket.id}`, data);
   });

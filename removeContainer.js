@@ -3,6 +3,10 @@ const docker = require("./docker");
 
 module.exports = async (socket_id) => {
   let dockerid = await redisdb.get(`socketid_${socket_id}`);
+  if (dockerid === undefined || dockerid === null) {
+    console.log(`Dockerid for socket ${socket_id} is null`);
+    return;
+  }
   if (!(await docker.containerExists(dockerid))) {
     console.log(`!Container ${docker.id} doesn't exist`);
     return;
