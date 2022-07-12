@@ -1,23 +1,24 @@
 {
-  "name": "webapps_server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Charles Steen",
-  "license": "GPL-2.0-only",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cookie-session": "^1.4.0",
-    "dockerode": "^3.3.1",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "passport": "^0.5.0",
-    "passport-google-oauth20": "^2.0.0",
-    "redis": "^4.0.0-rc.3",
-    "socket.io": "^4.3.1",
-    "uuid": "^8.3.2"
-  }
+	"name": "webapps_server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Charles Steen",
+	"license": "GPL-2.0-only",
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cookie-session": "^1.4.0",
+		"dockerode": "^3.3.2",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"passport": "^0.5.0",
+		"passport-google-oauth20": "^2.0.0",
+		"redis": "^4.0.0-rc.3",
+		"socket.io": "^4.3.1",
+		"ssh2": "^1.11.0",
+		"uuid": "^8.3.2"
+	}
 }
