@@ -3,13 +3,19 @@ const Docker = require("dockerode");
 const redisdb = require("./redisdb");
 let e = (module.exports = {});
 let host = process.env.DOCKER_HOST;
-const docker = new Docker({
-	protocol: "ssh",
-	host: host,
-	port: 22,
-	username: process.env.DOCKER_HOST_USERNAME,
-	password: process.env.DOCKER_HOST_PASSWORD,
-});
+let docker;
+if (process.env.DOCKER_LOCALHOST == 1) {
+	docker = new Docker();
+} else {
+	docker = new Docker({
+		protocol: "ssh",
+		host: host,
+		port: 22,
+		username: process.env.DOCKER_HOST_USERNAME,
+		password: process.env.DOCKER_HOST_PASSWORD,
+	});
+}
+
 e.startApp = async (container, port, id, user) => {
 	// try {
 	return new Promise(async (resolve, reject) => {

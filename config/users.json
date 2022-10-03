@@ -1,14 +1,10 @@
 {
-  "raymondsteen4@gmail.com": {
-    "path": "/home/ray/docker/raymondsteen4@gmail.com",
+  "admin@email.com": {
+    "path": "/home/user/docker/admin@email.com",
     "permissions": ["admin"]
   },
-  "cs11611@clarke.k12.va.us": {
-    "path": "/home/ray/docker/cs11611@clarke.k12.va.us",
-    "permissions": ["design", "3d"]
-  },
-  "mindysteen@gmail.com": {
-    "path": "/home/ray/docker/mindysteen@gmail.com",
-    "permissions": ["all"]
-  }
+  "example@email.com": {
+      "path": "/home/user/docker/example@email.com",
+      "permissions": ["3d","design"]
+   }
 }
