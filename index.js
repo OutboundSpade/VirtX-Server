@@ -14,9 +14,9 @@ var fs = require("fs");
 // var https = require("https");
 let privateKey, certificate, credentials;
 if (process.env.ENCRYPT == 1) {
-  privateKey = fs.readFileSync("./cert/privkey.pem", "utf8");
-  certificate = fs.readFileSync("./cert/cert.pem", "utf8");
-  credentials = { key: privateKey, cert: certificate };
+	privateKey = fs.readFileSync("./cert/privkey.pem", "utf8");
+	certificate = fs.readFileSync("./cert/cert.pem", "utf8");
+	credentials = { key: privateKey, cert: certificate };
 }
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,63 +26,67 @@ app.use(bodyParser.json());
 
 // For an actual app you should configure this with an experation time, better keys, proxy and secure
 app.use(
-  cookieSession({
-    name: "virtx-login-session",
-    keys: ["key1", "key2"],
-  })
+	cookieSession({
+		name: "virtx-login-session",
+		keys: ["129dk0asd", "199a8960572b&"],
+	})
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
 let server;
 if (process.env.ENCRYPT == 1) {
-  console.log("Using (encrypted) https");
-  server = require("https").createServer(credentials, app);
+	console.log("Using (encrypted) https");
+	server = require("https").createServer(credentials, app);
 } else {
-  console.log("Using (unencrypted) http");
-  server = require("http").createServer(app);
+	console.log("Using (unencrypted) http");
+	server = require("http").createServer(app);
 }
 console.log(`Container memory limit: ${process.env.DOCKER_MEM_LIMIT}MB`);
 console.log(`Container cpu limit: ${process.env.DOCKER_CPU_LIMIT}`);
 const io = require("socket.io")(server);
 io.on("connection", async (socket) => {
-  socket.on("docker-id", async (data) => {
-    if (data == null || data == undefined || Object.keys(data).length == 0) {
-      console.log(`No docker-id sent from ${socket.id}`);
-      return;
-    }
-    console.log(`recieved docker id ${data} from ${socket.id}`);
-    await redisdb.set(`socketid_${socket.id}`, data);
-  });
-  socket.on("disconnect", async () => {
-    removeContainer(socket.id);
-  });
+	socket.on("docker-id", async (data) => {
+		if (
+			data == null ||
+			data == undefined ||
+			Object.keys(data).length == 0
+		) {
+			console.log(`No docker-id sent from ${socket.id}`);
+			return;
+		}
+		console.log(`recieved docker id ${data} from ${socket.id}`);
+		await redisdb.set(`socketid_${socket.id}`, data);
+	});
+	socket.on("disconnect", async () => {
+		removeContainer(socket.id);
+	});
 });
 
 app.get("/", auth.requireAuthRedirect);
 app.get(
-  "/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
+	"/auth/google",
+	passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
 app.get(
-  "/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
-  function (req, res) {
-    // Successful authentication, redirect home.
-    res.redirect("/");
-  }
+	"/auth/google/callback",
+	passport.authenticate("google", { failureRedirect: "/login" }),
+	function (req, res) {
+		// Successful authentication, redirect home.
+		res.redirect("/");
+	}
 );
 app.use("/api/admin", auth.requireAdmin, api);
 app.use("/api", auth.requireAuth, api);
 app.get("/logout", (req, res) => {
-  req.session = null;
-  req.logout();
-  res.redirect("/login");
+	req.session = null;
+	req.logout();
+	res.redirect("/login");
 });
 
 app.use(express.static("./public"));
 app.use("/appassets", express.static("./config/assets"));
 server.listen(port, () => {
-  console.log(`Listening on port ${port}!`);
+	console.log(`Listening on port ${port}!`);
 });

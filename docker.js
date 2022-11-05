@@ -1,11 +1,19 @@
 const { setTimeout } = require("timers/promises");
 const Docker = require("dockerode");
 const redisdb = require("./redisdb");
+const { exit } = require("process");
 let e = (module.exports = {});
 let host = process.env.DOCKER_HOST;
-let docker;
+/** @type {Docker} */
+let docker; //
 if (process.env.DOCKER_LOCALHOST == 1) {
-	docker = new Docker();
+	console.log(
+		`detected using DOCKER_LOCALHOST: using '/var/run/docker.sock'`
+	);
+	docker = new Docker({
+		socketPath: "/var/run/docker.sock",
+		host: "",
+	});
 } else {
 	docker = new Docker({
 		protocol: "ssh",
@@ -15,9 +23,21 @@ if (process.env.DOCKER_LOCALHOST == 1) {
 		password: process.env.DOCKER_HOST_PASSWORD,
 	});
 }
+docker.version((err, result) => {
+	if (err) {
+		console.error(`error getting docker version! :\n ${JSON.stringify(e)}`);
+		return;
+	}
+	console.log(`docker version: ${result.Version}`);
+});
+docker.ping().catch((e) => {
+	console.error(`error pinging docker! :\n ${e}`);
+	exit(1);
+});
 
 e.startApp = async (container, port, id, user) => {
 	// try {
+	console.log(`starting app (in docker.js) - ${container}`);
 	return new Promise(async (resolve, reject) => {
 		docker
 			.run(
@@ -58,7 +78,14 @@ e.startApp = async (container, port, id, user) => {
 						},
 					},
 				},
-				() => {}
+				(err, data, container) => {
+					if (err) {
+						console.error("Error in docker.startApp!");
+						console.error(err);
+						console.error(JSON.stringify(err));
+						reject(err);
+					}
+				}
 			)
 			.on("container", (container) => {
 				console.log(`container ${container.id} has been created`);
