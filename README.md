@@ -1,5 +1,6 @@
-# <center>VirtX Server</center>
-### <center>Server implementation of the VirtX Project</center>
+<h1 align="center">VirtX Server</div>
+<h3 align="center">Server implementation of the VirtX Project</h3>
+
 ---
 
 ## Usage
@@ -26,12 +27,19 @@ In addition, app icons specified in [`apps.json`](#apps) must be placed in an `a
 ### Apps
 The `apps.json` file format:
 
+
 `internal-name` - Name only used internally, traditionally all lowercase
+
 `name` - Name of the app displayed on the website
+
 `description` - Description of the app displayed on the website
+
 `icon` - name of icon file shown on the website located in the `assets` folder within the config folder
+
 `type` - always `container`
+
 `container` -  image name & tag on docker host
+
 ```
 {
   "internal-name": {
@@ -60,8 +68,11 @@ Example:
 ### Users
 The `users.json` file format:
 
+
 `email` - the full email address of the user
+
 `path` - the path on the docker host to mount the container folder (see [CONTAINER_PATH](#environment-variables) for container folder)
+
 `permissions` - an array of permissions or "groups" that a user belongs to. (see [Permissions](#permissions-aka-groups))
 
 ```
@@ -85,7 +96,9 @@ Example:
 ### Permissions (aka groups)
 The `permissions.json` file format:
 
+
 `group-name`: name of the permission/group
+
 `app1-3`: the internal name of the apps that the permission/group has access to (see [Apps](#apps)) 
 
 ```
@@ -106,7 +119,7 @@ Example:
 `all` has access to all apps
 #### Admin
 `admin` has access to all apps, similar to [`all`](#all).
-Unlike [`all`](#all), `admin` has the ability to reload configuration files in the top right of the dashboard by clicking on your icon then `Reload Configuration Files`. This is required for changes to the config files to take effect without restarting the server.
+Unlike [`all`](#all), `admin` has the ability to reload configuration files in the top right of the dashboard by clicking on your user icon then `Reload Configuration Files`. This is required for changes to the config files to take effect without restarting the server.
 ## Environment Variables
 
 
